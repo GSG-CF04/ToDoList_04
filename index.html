@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+      integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o="
+      crossorigin="anonymous"
+    />
+
+    <title>Just Do it</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <!-- Theme Selector  -->
+      <div class="flexrow-container">
+        <div class="standard-theme theme-selector"></div>
+        <div class="light-theme theme-selector"></div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="title">Just Do it</h1>
+    </header>
+    <main>
+      <div class="content">
+        <!-- Form -->
+        <div id="form">
+          <form>
+            <input
+              type="text"
+              class="todo-input"
+              placeholder="Add a Task"
+              required
+            />
+            <button class="todo-btn">I Got This!</button>
+          </form>
+        </div>
+        <div id="myUnorderedList">
+          <ul class="todo-list">
+            <div class="todo">
+              Items added to this list:
+              <li></li>
+              <button class="fa fa-check check-btn"></button>
+              <button class="fa fa-edit edit-btn"></button>
+              <button class="fa fa-trash delete-btn"></button>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
