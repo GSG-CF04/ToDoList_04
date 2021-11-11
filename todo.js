@@ -94,3 +94,26 @@ toDoBtn.addEventListener("click", (event) => {
     toDoInput.value = "";
   }
 });
+
+// function to toggle checked task and delete task
+
+toDoList.addEventListener("click", deleteCheck);
+
+function deleteCheck(e) {
+  const item = e.target;
+  //Delete a task issue
+  if (item.classList[2] === "delete-btn") {
+    const toDo = item.parentElement;
+    //Animation
+    toDo.parentElement.classList.add("fall");
+    //Transitionend means that it waits the animation to finish before removing the element
+    toDo.addEventListener("transitionend", () => {
+      toDo.parentElement.remove();
+    });
+  }
+
+  //Check a task issue
+  if (item.classList[2] === "check-btn") {
+    item.parentElement.parentElement.classList.toggle("completed");
+  }
+}

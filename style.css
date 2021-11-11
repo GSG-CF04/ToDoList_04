@@ -142,3 +142,14 @@
     margin: 0 0.3125rem;
   }
   
+  .completed {
+    transition: 0.3s;
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .fall {
+    transition: 0.5s;
+    transform: translateY(45rem) rotateZ(45deg);
+    opacity: 0;
+  }
