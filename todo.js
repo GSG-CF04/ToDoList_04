@@ -51,3 +51,46 @@ function changeTheme(theme) {
     changeLightTheme();
   }
 }
+
+//Input Field
+
+//Add a new task issue
+toDoBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  //Create Div
+  const toDoDiv = document.createElement("div");
+
+  toDoDiv.classList.add("todo");
+
+  //Create li
+  newToDo = document.createElement("li");
+
+  if (toDoInput.value === "") {
+    alert("You must write something!");
+  } else {
+    toDoDiv.innerHTML = `<p>${toDoInput.value}</p>`;
+    newToDo.classList.add("todo-item");
+    toDoDiv.appendChild(newToDo);
+
+    //check button
+    const checked = document.createElement("button");
+    checked.innerHTML = `<button class="fa fa-check check-btn"></button>`;
+    checked.classList.add("check-btn");
+    toDoDiv.appendChild(checked);
+
+    //Edit button
+
+    const edited = document.createElement("button");
+    edited.innerHTML = `<button class="fa fa-edit edit-btn"></button>`;
+    edited.classList.add("edit-btn");
+    toDoDiv.appendChild(edited);
+
+    const deleted = document.createElement("button");
+    deleted.innerHTML = `<button class="fa fa-trash delete-btn"></button>`;
+    deleted.classList.add("delete-btn");
+    toDoDiv.appendChild(deleted);
+
+    toDoList.appendChild(toDoDiv);
+    toDoInput.value = "";
+  }
+});
