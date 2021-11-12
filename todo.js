@@ -106,6 +106,8 @@ function deleteCheck(e) {
     const toDo = item.parentElement;
     //Animation
     toDo.parentElement.classList.add("fall");
+    removeLocalTodos(toDo);
+
     //Transitionend means that it waits the animation to finish before removing the element
     toDo.addEventListener("transitionend", () => {
       toDo.parentElement.remove();
@@ -116,4 +118,16 @@ function deleteCheck(e) {
   if (item.classList[2] === "check-btn") {
     item.parentElement.parentElement.classList.toggle("completed");
   }
+}
+
+function removeLocalTodos(todo) {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  const todoIndex = todo.children[0].innerText;
+  todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
