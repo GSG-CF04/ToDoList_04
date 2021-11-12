@@ -10,6 +10,7 @@ const toDoList = document.querySelector(".todo-list");
 const editBtn = document.querySelector(".edit-btn");
 const todo = document.querySelectorAll(".todo");
 
+document.addEventListener("DOMContentLoaded", getTodos);
 lightTheme.addEventListener("click", changeLightTheme);
 standardTheme.addEventListener("click", changeStandardTheme);
 
@@ -65,6 +66,8 @@ toDoBtn.addEventListener("click", (event) => {
   //Create li
   newToDo = document.createElement("li");
 
+  saveLocalTodos(toDoInput.value);
+
   if (toDoInput.value === "") {
     alert("You must write something!");
   } else {
@@ -116,4 +119,60 @@ function deleteCheck(e) {
   if (item.classList[2] === "check-btn") {
     item.parentElement.parentElement.classList.toggle("completed");
   }
+}
+
+//Save task to localStorage
+
+function saveLocalTodos(todo) {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  todos.push(todo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+//Get tasks from localStorage and display them
+function getTodos() {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  todos.forEach((todo) => {
+    const toDoDiv = document.createElement("div");
+    document.body.classList.contains("standard-theme")
+      ? toDoDiv.classList.add("todo")
+      : toDoDiv.classList.add("todo-light");
+
+    //Create li
+    newToDo = document.createElement("li");
+
+    toDoDiv.innerHTML = `<span>${todo}</span>`;
+    newToDo.classList.add("todo-item");
+    toDoDiv.appendChild(newToDo);
+
+    //check button
+    const checked = document.createElement("button");
+    checked.innerHTML = `<button class="fa fa-check check-btn"></button>`;
+    checked.classList.add("check-btn");
+    toDoDiv.appendChild(checked);
+
+    //Edit button
+
+    const edited = document.createElement("button");
+    edited.innerHTML = `<button class="fa fa-edit edit-btn"></button>`;
+    edited.classList.add("edit-btn");
+    toDoDiv.appendChild(edited);
+
+    const deleted = document.createElement("button");
+    deleted.innerHTML = `<button class="fa fa-trash delete-btn"></button>`;
+    deleted.classList.add("delete-btn");
+    toDoDiv.appendChild(deleted);
+
+    toDoList.appendChild(toDoDiv);
+  });
 }
