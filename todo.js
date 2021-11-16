@@ -61,7 +61,7 @@ toDoBtn.addEventListener("click", (event) => {
   //Create Div
   const toDoDiv = document.createElement("div");
 
-  toDoDiv.classList.add("todo");
+  toDoDiv.setAttribute("class", "todo");
 
   //Create li
   newToDo = document.createElement("li");
@@ -71,30 +71,54 @@ toDoBtn.addEventListener("click", (event) => {
   if (toDoInput.value === "") {
     alert("You must write something!");
   } else {
-    toDoDiv.innerHTML = `<p>${toDoInput.value}</p>`;
+    toDoDiv.innerHTML = `<input class="inputEle" type="text" disabled value = "${toDoInput.value}">`;
     newToDo.classList.add("todo-item");
     toDoDiv.appendChild(newToDo);
 
     //check button
-    const checked = document.createElement("button");
-    checked.innerHTML = `<button class="fa fa-check check-btn"></button>`;
-    checked.classList.add("check-btn");
-    toDoDiv.appendChild(checked);
+    toDoDiv.innerHTML = `
+    <input class="inputEle" type="text" disabled value = "${toDoInput.value}">
+    <div class="iconsCont">
+    <button class="fa fa-check check-btn"></button>
+    </div>
+    `;
 
     //Edit button
 
-    const edited = document.createElement("button");
-    edited.innerHTML = `<button class="fa fa-edit edit-btn"></button>`;
-    edited.classList.add("edit-btn");
-    toDoDiv.appendChild(edited);
+    toDoDiv.innerHTML = `
+    <input class="inputEle" type="text" disabled value = "${toDoInput.value}">
+    <div class="iconsCont">
+    <button class="fa fa-check check-btn"></button>
+    <button id="btnId" class="fa fa-edit edit-btn"></button>
+    </div>
+    `;
 
-    const deleted = document.createElement("button");
-    deleted.innerHTML = `<button class="fa fa-trash delete-btn"></button>`;
-    deleted.classList.add("delete-btn");
-    toDoDiv.appendChild(deleted);
+    // Delete button
 
-    toDoList.appendChild(toDoDiv);
+    toDoDiv.innerHTML = `
+    <input class="inputEle" type="text" disabled value = "${toDoInput.value}">
+    <div class="iconsCont">
+    <button class="fa fa-check check-btn"></button>
+    <button id="btnId" class="fa fa-edit edit-btn"></button>
+    <button class="fa fa-trash delete-btn"></button>
+    </div>
+    `;
+
+    toDoList.prepend(toDoDiv);
     toDoInput.value = "";
+
+    const btnn = document.getElementById("btnId");
+
+    btnn.addEventListener("click", () => {
+      toDoDiv.innerHTML = `
+        <input class="inputEle" type="text" value = "${toDoInput.value}">
+        <div class="iconsCont">
+        <button class="fa fa-check check-btn"></button>
+        <button id="btnId" class="fa fa-edit edit-btn"></button>
+        <button class="fa fa-trash delete-btn"></button>
+        </div>
+        `;
+    });
   }
 });
 
@@ -151,28 +175,39 @@ function getTodos() {
     //Create li
     newToDo = document.createElement("li");
 
-    toDoDiv.innerHTML = `<span>${todo}</span>`;
+    toDoDiv.innerHTML = `<input class="inputEle" type="text" disabled value = "${todo}">`;
     newToDo.classList.add("todo-item");
     toDoDiv.appendChild(newToDo);
 
     //check button
-    const checked = document.createElement("button");
-    checked.innerHTML = `<button class="fa fa-check check-btn"></button>`;
-    checked.classList.add("check-btn");
-    toDoDiv.appendChild(checked);
+    toDoDiv.innerHTML = `
+    <input class="inputEle" type="text" disabled value = "${todo}">
+    <div class="iconsCont">
+    <button class="fa fa-check check-btn"></button>
+    </div>
+    `;
 
     //Edit button
 
-    const edited = document.createElement("button");
-    edited.innerHTML = `<button class="fa fa-edit edit-btn"></button>`;
-    edited.classList.add("edit-btn");
-    toDoDiv.appendChild(edited);
+    toDoDiv.innerHTML = `
+    <input class="inputEle" type="text" disabled value = "${todo}">
+    <div class="iconsCont">
+    <button class="fa fa-check check-btn"></button>
+    <button id="btnId" class="fa fa-edit edit-btn"></button>
+    </div>
+    `;
 
-    const deleted = document.createElement("button");
-    deleted.innerHTML = `<button class="fa fa-trash delete-btn"></button>`;
-    deleted.classList.add("delete-btn");
-    toDoDiv.appendChild(deleted);
+    // Delete button
 
-    toDoList.appendChild(toDoDiv);
+    toDoDiv.innerHTML = `
+    <input class="inputEle" type="text" disabled value = "${todo}">
+    <div class="iconsCont">
+    <button class="fa fa-check check-btn"></button>
+    <button id="btnId" class="fa fa-edit edit-btn"></button>
+    <button class="fa fa-trash delete-btn"></button>
+    </div>
+    `;
+
+    toDoList.prepend(toDoDiv);
   });
 }
