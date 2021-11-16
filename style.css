@@ -129,6 +129,7 @@
     padding: 1.0625rem;
     font-size: 1.25rem;
     border-radius: 1.875rem;
+    flex: 1;
   }
   
   .check-btn,
