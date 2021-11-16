@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", getTodos);
 lightTheme.addEventListener("click", changeLightTheme);
 standardTheme.addEventListener("click", changeStandardTheme);
 
+document.querySelectorAll('.fa-trash').forEach((item,index)=>{
+  if(item==e.target){
+    let todos = JSON.parse(localStorage.getItem("todos"));
+    todos.splice(index,1);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+
+  })
 //// Check if one theme has been set and apply it
 let theme = localStorage.getItem("theme");
 theme === null
@@ -88,6 +96,8 @@ toDoBtn.addEventListener("click", (event) => {
     edited.classList.add("edit-btn");
     toDoDiv.appendChild(edited);
 
+    //delete button
+    
     const deleted = document.createElement("button");
     deleted.innerHTML = `<button class="fa fa-trash delete-btn"></button>`;
     deleted.classList.add("delete-btn");
@@ -95,6 +105,7 @@ toDoBtn.addEventListener("click", (event) => {
 
     toDoList.appendChild(toDoDiv);
     toDoInput.value = "";
+
   }
 });
 
@@ -133,6 +144,8 @@ function saveLocalTodos(todo) {
   todos.push(todo);
   localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+
 
 //Get tasks from localStorage and display them
 function getTodos() {
