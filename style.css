@@ -165,3 +165,14 @@ button:hover {
   transform: translateY(45rem) rotateZ(45deg);
   opacity: 0;
 }
+
+@media only screen and (min-width: 767px) {
+  .todo-list {
+    min-width: 60vw;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .todo-list {
+    min-width: 50vw;
+  }
+}
