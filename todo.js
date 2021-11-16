@@ -106,12 +106,13 @@ function deleteCheck(e) {
   const item = e.target;
   //Delete a task issue
   if (item.classList[2] === "delete-btn") {
-    const toDo = item.parentElement;
+    const toDo = item.parentElement.parentElement;
     //Animation
-    toDo.parentElement.classList.add("fall");
+    toDo.classList.add("fall");
+    removeLocalTodos(toDo);
     //Transitionend means that it waits the animation to finish before removing the element
-    toDo.addEventListener("transitionend", () => {
-      toDo.parentElement.remove();
+    toDo.addEventListener("transitionend", function(){
+      toDo.remove();
     });
   }
 
@@ -176,3 +177,21 @@ function getTodos() {
     toDoList.appendChild(toDoDiv);
   });
 }
+
+
+
+
+function removeLocalTodos(todo) {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  const todoIndex = todo.children[0].innerText;
+  console.log(todoIndex)
+  todos.splice(todos.indexOf(todoIndex), 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+
