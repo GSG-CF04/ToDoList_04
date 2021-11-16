@@ -1,155 +1,286 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-primary: #f7e2df;
+  --light-primary: #efefef;
+}
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Work Sans", sans-serif;
+  min-height: 100vh;
+  padding-top: 3%;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 3rem;
+  min-height: 25vh;
+  width: 100%;
+}
+
+.flexrow-container {
+  display: flex;
+  justify-content: space-around;
+  align-self: flex-end;
+  align-items: center;
+  margin-right: 3%;
+}
+
+.theme-selector {
+  border: 1px solid #d1dae3;
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+  margin: 0 8px;
+}
+
+.theme-selector:hover {
+  box-shadow: white 0 0 8px;
+  cursor: pointer;
+}
+
+.theme-selector:active {
+  transform: scale(1.25);
+}
+
+.standard-theme {
+  background-image: linear-gradient(100deg, #3b3a3a, #0b3e52);
+  transition: 0.3s linear;
+}
+
+.light-theme {
+  background-image: linear-gradient(100deg, #d4f1ff, #ffffff);
+  color: #1a150e;
+  transition: 0.3s linear;
+}
+
+.title {
+  color: #d4f1ff;
+  border-right: solid 3px rgba(0, 0, 0, 0.75);
+  white-space: pre;
+  overflow: hidden;
+  letter-spacing: 0.2rem;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  max-width: 480px;
+  animation: animated-text 2s steps(11, end) 0.5s 1 normal both,
+    animated-cursor 750ms steps(11, end) infinite;
+}
+
+@keyframes animated-text {
+  from {
+    width: 0%;
   }
-  
-  body {
-    background-image: linear-gradient(100deg, #575656, #062e3f);
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-family: "Work Sans", sans-serif;
-    min-height: 100vh;
-    padding-top: 3%;
+  to {
+    width: 480px;
   }
-  
-  .header-section {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    font-size: 3rem;
-    min-height: 25vh;
-    width: 100%;
+}
+
+@keyframes animated-cursor {
+  from {
+    border-right-color: rgba(0, 0, 0, 0.75);
   }
-  
+  to {
+    border-right-color: transparent;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  font-size: 1.7rem;
+  width: 100%;
+  margin: 15px 0;
+  padding: 0.8rem;
+}
+
+form input {
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  outline: none;
+  border-top-left-radius: 17px;
+  border-bottom-left-radius: 17px;
+  max-width: 500px;
+  width: 100%;
+}
+
+i {
+  pointer-events: none;
+}
+
+form input:hover {
+  cursor: text;
+}
+
+button {
+  border: none;
+  outline: none;
+  transition: box-shadow 200ms ease, background-color 200ms ease-in-out;
+}
+
+form button {
+  padding: 10px;
+  font-size: 17px;
+  border-top-right-radius: 17px;
+  border-bottom-right-radius: 17px;
+  min-width: 100px;
+}
+
+button.standard-button {
+  background-color: var(--dark-primary);
+  color: rgb(0, 0, 0);
+}
+
+button.standard-button:hover {
+  background-color: white;
+  box-shadow: #fff8 0 0 10px;
+  transition: 0.4s linear;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+form input.standard-input:hover {
+  background-color: var(--dark-primary);
+  transition: 0.4s linear;
+}
+
+form input.light-input:hover {
+  background-color: #919699;
+  transition: 0.4s linear;
+}
+
+button.light-button:hover {
+  background-color: #f0f0f0;
+  transition: 0.4s linear;
+}
+
+#myUnorderedList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  min-width: 25%;
+  list-style-type: none;
+}
+
+.todo {
+  background: var(--dark-primary);
+  margin: 1rem;
+  font-size: 19px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25em 0.5em;
+  border-radius: 30px;
+  transition: all 0.5s ease;
+}
+
+.todo-light {
+  background: var(--light-primary);
+  margin: 1rem;
+  font-size: 19px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25em 0.5em;
+  border-radius: 30px;
+  transition: all 0.5s ease;
+}
+
+.todo li {
+  padding: 17px;
+  font-size: 20px;
+  border-radius: 30px;
+  /* To put the icons on the right */
+  flex: 1;
+}
+
+.completed {
+  transition: 0.3s;
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.check-btn,
+.delete-btn,
+.edit-btn {
+  font-size: 19px;
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+  border-radius: 80%;
+  margin: 0 5px;
+}
+
+.fall {
+  transition: 0.5s;
+  transform: translateY(3rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+/* Responsive design */
+@media only screen and (max-width: 1000px) {
   .flexrow-container {
-    display: flex;
-    justify-content: space-around;
-    align-self: flex-end;
-    align-items: center;
-    margin-right: 3%;
+    margin-right: 0;
   }
-  
-  .theme-selector {
-    border: 0.0625rem solid #d1dae3;
-    border-radius: 100%;
-    height: 2.1875rem;
-    width: 2.1875rem;
-    margin: 0 0.5rem;
-  }
-  
-  .theme-selector:hover {
-    box-shadow: white 0 0 0.5rem;
-    cursor: pointer;
-  }
-  
-  .standard-theme {
-    background-image: linear-gradient(100deg, #575656, #062e3f);
-    color: #f7e2df;
-  }
-  
-  .light-theme {
-    background-image: linear-gradient(100deg, #d4f1ff, #ffffff);
-  }
-  
-  .title {
-    color: #d4f1ff;
-  }
-  
-  .form-content {
-    display: flex;
-    justify-content: center;
-    font-size: 1.7rem;
-    width: 100%;
-    margin: 0.9375rem 0;
-    padding: 0.05rem;
-  }
-  
-  .form-content input {
-    padding: 0.625rem;
-    font-size: 1.0625rem;
-    border: none;
-    outline: none;
-    border-top-left-radius: 1.0625rem;
-    border-bottom-left-radius: 1.0625rem;
-    max-width: 31rem;
-    width: 100%;
-  }
-  
-  .form-content input:hover {
-    cursor: text;
-    background-color: #062e3f;
-    transition: 0.5s;
-  }
-  
-  button {
-    border: none;
-    outline: none;
-  }
-  
-  .form-content button {
-    padding: 0.625rem;
-    font-size: 1.0625rem;
-    border-top-right-radius: 1.0625rem;
-    border-bottom-right-radius: 1.0625rem;
-    min-width: 6.25rem;
-  }
-  
-  button:hover {
-    cursor: pointer;
-    background-color: #062e3f;
-    transition: 0.5s;
-  }
-  
-  #myUnorderedList {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .todo-list {
-    min-width: 25%;
-    list-style-type: none;
-  }
-  
-  .todo {
-    background: #f7e2df;
-    margin: 1rem;
-    font-size: 1.11rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.25em 0.5em;
-    border-radius: 1.875rem;
-  }
-  
-  .todo li {
-    padding: 1.0625rem;
-    font-size: 1.25rem;
-    border-radius: 1.875rem;
-  }
-  
-  .check-btn,
-  .delete-btn,
-  .edit-btn {
-    font-size: 1.1rem;
-    cursor: pointer;
-    width: 2em;
-    height: 2em;
-    border-radius: 80%;
-    margin: 0 0.3125rem;
-  }
-  
-  .completed {
-    transition: 0.3s;
-    text-decoration: line-through;
-    opacity: 0.5;
+}
+
+@media only screen and (max-width: 800px) {
+  header {
+    font-size: 2rem;
   }
 
-  .fall {
-    transition: 0.5s;
-    transform: translateY(45rem) rotateZ(45deg);
-    opacity: 0;
+  .title {
+    animation: animated-text 3s steps(16, end) 0.5s 1 normal both,
+      animated-cursor 750ms steps(16, end) infinite;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    max-width: 330px;
   }
+}
+
+@media only screen and (max-width: 400px) {
+  header {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    animation: animated-text 3.5s steps(16, end) 0.5s 1 normal both,
+      animated-cursor 750ms steps(16, end) infinite;
+    max-width: 255px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  form {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  form input {
+    border-radius: 17px;
+  }
+
+  form button {
+    border-radius: 15px;
+    margin-top: 15px;
+    width: 50%;
+  }
+  form > button.light-button {
+    box-shadow: 0 0 5px lightgray;
+  }
+}
